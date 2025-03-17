@@ -54,7 +54,7 @@ def knn_predict(xTrain, yTrain, xTest, k=3): #近朱者赤找最近作為標籤 
 
         predictions.append(most_label)
     
-    return np.array(predictions)
+    return np.array(predictions).flatten()
 
 
 if __name__ == "__main__":
@@ -81,6 +81,6 @@ if __name__ == "__main__":
     df.to_csv("predictions.csv", header=False, index=False)
 
     # Calculate accuracy
-    result = predictions == test_label
-    accuracy = sum(result == True) / len(result)
+    result = predictions == test_label.flatten()
+    accuracy = np.mean(result)
     print('Evaluate KNN(K=%d) on Iris Flower dataset. Accuracy = %.2f' % (args.K, accuracy))
