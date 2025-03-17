@@ -32,15 +32,7 @@ def knn_calc_dists(xTrain, xTest, k):
     return indices, distances
 
 def knn_predict(xTrain, yTrain, xTest, k=3): #近朱者赤找最近作為標籤 xtrain:訓練資料ex:蘋果 ytrain:水果名稱標籤 xtest:想知道的新水果  1.排序距離 
-    """
-    Input:
-        xTrain = n x d matrix. n=rows and d=features
-        yTrain = n x 1 array. n=rows with label value
-        xTest = m x d matrix. m=rows and d=features
-        k = number of nearest neighbors to be found
-    Output:
-        predictions = predicted labels, ie preds(i) is the predicted label of xTest(i,:)
-    """
+
     indices, distances = knn_calc_dists(xTrain, xTest, k) #取dist值
     rows, columns = indices.shape                         #取array形狀
     predictions = []
@@ -54,7 +46,7 @@ def knn_predict(xTrain, yTrain, xTest, k=3): #近朱者赤找最近作為標籤 
 
         predictions.append(most_label)
     
-     return np.array(predictions).reshape(-1, 1)
+    return np.array(predictions).reshape(-1, 1)
 
 
 if __name__ == "__main__":
