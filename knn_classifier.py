@@ -26,10 +26,10 @@ def knn_calc_dists(xTrain, xTest, k):
     distances += np.sum(xTest**2, axis=1)
     distances += np.sum(xTrain**2, axis=1)[:, np.newaxis]
     distances = np.sqrt(distances)
-    indices = np.argsort(distances,axis=0) #距離排序用索引呈現 
-    distances = np.sort(distances,axis=0)  #直接排
+    indices = np.argsort(distances, axis=0)[:k, :]
+    distances = np.sort(distances, axis=0)[:k, :]
     
-    return indices[0:k, : ], distances  #選0到k-1行  : 表全部得列 後面遠得都捨棄
+    return indices, distances
 
 def knn_predict(xTrain, yTrain, xTest, k=3): #近朱者赤找最近作為標籤 xtrain:訓練資料ex:蘋果 ytrain:水果名稱標籤 xtest:想知道的新水果  1.排序距離 
     """
