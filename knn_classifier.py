@@ -54,7 +54,7 @@ def knn_predict(xTrain, yTrain, xTest, k=3): #近朱者赤找最近作為標籤 
 
         predictions.append(most_label)
     
-    return np.array(predictions)
+     return np.array(predictions).reshape(-1, 1)
 
 
 if __name__ == "__main__":
