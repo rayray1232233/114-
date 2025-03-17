@@ -46,7 +46,7 @@ def knn_predict(xTrain, yTrain, xTest, k=3): #近朱者赤找最近作為標籤 
     predictions = []
     for j in range(columns):
         k_nearest_indices=indices[:, j]                       #取第j列全部行
-        k_nearest_labels = yTrain[k_nearest_indices]       #k最近idx數列從標籤列中取出
+        k_nearest_labels = yTrain[k_nearest_indices].flatten()        #k最近idx數列從標籤列中取出
         unique_labels, counts = np.unique(k_nearest_labels, return_counts=True) #np.unique每個值出現的次數
         #ex.K個最近標籤 ['蘋果', '香蕉', '蘋果', '蘋果', '橘子'] unique label=['蘋果', '橘子', '香蕉'] count=[3, 1, 1] 
         most_idx=np.argmax(counts)
@@ -54,7 +54,7 @@ def knn_predict(xTrain, yTrain, xTest, k=3): #近朱者赤找最近作為標籤 
 
         predictions.append(most_label)
     
-    return np.array(predictions).flatten()
+    return np.array(predictions)
 
 
 if __name__ == "__main__":
