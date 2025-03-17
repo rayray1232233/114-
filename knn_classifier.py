@@ -26,7 +26,7 @@ def knn_calc_dists(xTrain, xTest, k):
     distances += np.sum(xTest**2, axis=1)
     distances += np.sum(xTrain**2, axis=1)[:, np.newaxis]
     distances = np.sqrt(distances)
-    indices = np.argsort(distances, axis=0)[:k, :]
+    indices = np.argsort(distances, axis=0)[:k, :]    #選0到k-1行  : 表全部得列 後面遠得都捨棄
     distances = np.sort(distances, axis=0)[:k, :]
     
     return indices, distances
