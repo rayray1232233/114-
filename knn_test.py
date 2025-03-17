@@ -18,8 +18,8 @@ def test_knn_classifier_accuracy():
     predictions = knn_predict(train_data, train_label, test_data, K)
 
     # Calculate accuracy
-    result = predictions == test_label.flatten()
-    accuracy = np.mean(result)
+    result = predictions == test_label
+    accuracy = sum(result == True) / len(result)
     print('Evaluate KNN(K=%d) on Iris Flower dataset. Accuracy = %.2f' % (K, accuracy))
 
     assert accuracy > 0.33
